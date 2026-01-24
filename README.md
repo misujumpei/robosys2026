@@ -8,10 +8,9 @@
 誤った入力（数値以外や引数不足など）に対しては、適切なエラーメッセージを表示します。
 
 ## インストール方法
-以下のコマンドを入力してください。
-
+リポジトリをクローンし、ディレクトリに移動します。
 ```bash
-$git clone [https://github.com/misujumpei/robosys2026.git$](https://github.com/misujumpei/robosys2026.git$) cd robosys2026
+git@github.com:misujumpei/robosys2026.git
 ```
 
 以下のコマンドを入力し実行権限を付与してください。
