@@ -74,4 +74,15 @@ else
     exit 1
 fi
 
+
+# Test 8: 引数が足りないとき（使いかたを表示するか）
+res=$(./trig sin)      # 角度を入れずに実行してみる
+if [[ "$res" == *"使い方"* ]]; then
+    echo "Test 8 (引数不足): 正解 (Passed - 使い方を表示)"
+else
+    echo "Test 8 (引数不足): 不正解: 使い方を表示すべきです"
+    exit 1
+fi
+
+
 echo "すべての基本テストが完了"
