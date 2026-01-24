@@ -10,7 +10,7 @@
 ## インストール方法
 リポジトリをクローンし、ディレクトリに移動します。
 ```bash
-git@github.com:misujumpei/robosys2026.git
+git clone https://github.com/misujumpei/robosys2026.git
 cd robosys2026
 ```
 
