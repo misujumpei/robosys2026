@@ -11,6 +11,7 @@
 リポジトリをクローンし、ディレクトリに移動します。
 ```bash
 git@github.com:misujumpei/robosys2026.git
+cd 2026
 ```
 
 以下のコマンドを入力し実行権限を付与してください。
