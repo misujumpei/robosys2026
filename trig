@@ -5,12 +5,24 @@
 import sys  # sysモジュールを読み込み
 import math #数学用モジュール
 
-# print(sys.argv) # 確認済みのためコメントアウト
-
 
 
 if len(sys.argv) >= 3:
     func = sys.argv[1]
+    
+    try:
+        # ユーザーが入力した「文字」を「数値」に変える（ここで記号だとエラーが出る）
+        angle_deg = float(sys.argv[2])
+    
+    except ValueError:
+        # 2. もし記号や文字が入っていて変換に失敗したら、指示する
+        print("エラー: 角度には数値を入力してください")
+        sys.exit(1) # ここでプログラムを安全に終了させる
+    
+
+    # 無事に数値にできたら、ラジアンに変換して計算へ進む
+    angle_rad = math.radians(angle_deg)
+
     angle_deg = float(sys.argv[2])   # 文字列の '90' を、計算できる数値に変換
 
     angle_rad = math.radians(angle_deg)  # 角度をラジアンに変換
