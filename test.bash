@@ -65,4 +65,13 @@ else
 fi
 
 
+# Test 7: 引数が3つ以上あるとき
+res=$(./trig sin 90 dummy)
+if [ "$res" = "1.0" ]; then
+    echo "Test 7 (過剰引数): 正解 (Passed - 3つ目以降を無視して計算)"
+else
+    echo "Test 7 (過剰引数): 不正解: 余計な引数があっても計算すべきです"
+    exit 1
+fi
+
 echo "すべての基本テストが完了"
