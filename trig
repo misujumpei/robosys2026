@@ -5,4 +5,12 @@
 import sys  # sysモジュールを読み込み
 import math #数学用モジュール
 
-print(sys.argv)
+# print(sys.argv) # 確認済みのためコメントアウト
+
+# リストから関数と数値を抽出
+if len(sys.argv) >= 3:      #ターミナルで打った単語リストから単語数を数える
+    func = sys.argv[1]      #リストの1番目の文字をfuncに入れる。例)./trig sin 90と入力したとき中身がsinになり関数がわかる
+    angle = sys.argv[2]     #リストの2番目の文字をangleに入れる。例)./trig sin 90と入力したとき中身が90になり数字がわかる。
+    print("関数:", func, "角度:", angle)  #中身が正しく取り出せているか確認
+
+    
