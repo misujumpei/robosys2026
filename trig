@@ -1,0 +1,7 @@
+#!/usr/bin/python3
+# SPDX-FileCopyrightText: 2026 misujumpei
+# SPDX-License-Identifier: BSD-3-Clause
+
+import sys  # sysモジュールを読み込み
+
+print(sys.argv)
