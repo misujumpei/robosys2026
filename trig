@@ -3,5 +3,6 @@
 # SPDX-License-Identifier: BSD-3-Clause
 
 import sys  # sysモジュールを読み込み
+import math #数学用モジュール
 
 print(sys.argv)
