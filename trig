@@ -1,39 +1,33 @@
 #!/usr/bin/python3
 # SPDX-FileCopyrightText: 2026 misujumpei
 # SPDX-License-Identifier: BSD-3-Clause
+import sys
+import math
 
-import sys  # sysモジュールを読み込み
-import math #数学用モジュール
+# 引数が足りない場合の対策
+if len(sys.argv) < 3:
+    print("使い方: ./trig [sin|cos|tan] [角度]")
+    sys.exit(1)
 
+#  データの取り出しとエラーチェック 
+func = sys.argv[1]
 
+try:
+    # ここで数値変換（記号や文字だとここで except に飛ぶ）
+    angle_deg = float(sys.argv[2])
+except ValueError:
+    print("エラー: 角度には数値を入力してください")
+    sys.exit(1)
 
-if len(sys.argv) >= 3:
-    func = sys.argv[1]
-    
-    try:
-        # ユーザーが入力した「文字」を「数値」に変える（ここで記号だとエラーが出る）
-        angle_deg = float(sys.argv[2])
-    
-    except ValueError:
-        # 2. もし記号や文字が入っていて変換に失敗したら、指示する
-        print("エラー: 角度には数値を入力してください")
-        sys.exit(1) # ここでプログラムを安全に終了させる
-    
+# --- 3. 計算の準備（ラジアン変換） ---
+angle_rad = math.radians(angle_deg)
 
-    # 無事に数値にできたら、ラジアンに変換して計算へ進む
-    angle_rad = math.radians(angle_deg)
-
-    angle_deg = float(sys.argv[2])   # 文字列の '90' を、計算できる数値に変換
-
-    angle_rad = math.radians(angle_deg)  # 角度をラジアンに変換
-
-    if func == "sin":
-        print(math.sin(angle_rad))
-    elif func == "cos":
-        print(math.cos(angle_rad))
-    elif func == "tan":
-        print(math.tan(angle_rad))
-    else:
-        print(f"エラー: {func} は未対応です")  #　上記3点以外の対応していない文字などを入力された際のクラッシュ防止
-
-    
+# --- 4. 実際の計算と表示 ---
+if func == "sin":
+    print(math.sin(angle_rad))
+elif func == "cos":
+    print(math.cos(angle_rad))
+elif func == "tan":
+    print(math.tan(angle_rad))
+else:
+    print(f"エラー: {func} は未対応です") 
