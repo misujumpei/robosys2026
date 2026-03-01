@@ -4,31 +4,46 @@
 import sys
 import math
 
-# 引数が足りない場合の対策
-if len(sys.argv) < 3:
+
+# 引数が足りない場合
+if len(sys.argv) < 2:
     print("使い方: ./trig [sin|cos|tan] [角度]", file=sys.stderr)
     sys.exit(1)
 
-# データの取り出し
 func = sys.argv[1]
 
-# 角度の数値変換とエラーチェック
-try:
-    angle_deg = float(sys.argv[2])
-except ValueError:
-    print("エラー: 角度には数値を入力してください", file=sys.stderr)
-    sys.exit(1)
+input_data = []
 
-# ラジアン変換
-angle_rad = math.radians(angle_deg)
-
-# 関数の判定と計算実行
-if func == "sin":
-    print(math.sin(angle_rad))
-elif func == "cos":
-    print(math.cos(angle_rad))
-elif func == "tan":
-    print(math.tan(angle_rad))
+if len(sys.argv) >= 3:
+    input_data.append(sys.argv[2])
+elif not sys.stdin.isatty():
+     for line in sys.stdin:
+         input_data.append(line.strip())
 else:
-    print(f"エラー: {func} は未対応です", file=sys.stderr)
-    sys.exit(1)
+     sys.exit(1) 
+
+# 受け取ったデータを計算
+for angle_str in input_data:
+    if not angle_str:
+        continue
+
+    # 角度の数値変換とエラーチェック
+    try:
+        angle_deg = float(angle_str)
+    except ValueError:
+        sys.exit(1)
+
+    # ラジアン変換
+    angle_rad = math.radians(angle_deg)
+
+    # 関数の判定と計算
+    if func == "sin":
+        print(round(math.sin(angle_rad), 10))
+    elif func == "cos":
+        print(round(math.cos(angle_rad), 10))
+    elif func == "tan":
+        print(round(math.tan(angle_rad), 10))
+    else:
+        sys.exit(1)
+
+sys.exit(0)
