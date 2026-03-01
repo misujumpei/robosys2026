@@ -3,33 +3,39 @@
 # SPDX-License-Identifier: BSD-3-Clause
 
 # Test 1: sin 90 のテスト
-res=$(./trig sin 90)      
-if [ "$res" = "1.0" ]; then
-    echo "Test 1 (sin 90): 正解 (Passed)"
+res=$(./trig sin 90)
+status=$?
+if [ $status -eq 0 ] && [ "$res" = "1.0" ]; then
+    echo "Test 1: OK"
 else
-    echo "Test 1 (sin 90): 不正解: $res"
+    echo "Test 1: NG"
     exit 1
 fi
 
+
 # Test 2: cos 60 のテスト
-res=$(./trig cos 60)      
-# コンピュータの計算誤差を考慮して 0.5 が含まれているかチェック
-if [[ "$res" == *"0.5"* ]]; then
-    echo "Test 2 (cos 60): 正解 (Passed)"
+res=$(./trig cos 60)
+status=$?
+if [ $status -eq 0 ] && [[ "$res" == *"0.5"* ]]; then
+    echo "Test 2: OK"
 else
-    echo "Test 2 (cos 60): 不正解: $res"
+    echo "Test 2: NG"
     exit 1
 fi
+
 
 # Test 3: tan 45 のテスト
 res=$(./trig tan 45)      
-# 1.0 ぴったりでなくても、0.999... や 1.000... を許容するために 0.99 や 1.0 が含まれているかチェック
-if [[ "$res" == *"0.99"* ]] || [[ "$res" == *"1.0"* ]]; then
-    echo "Test 3 (tan 45): 正解 (Passed)"
+status=$?
+if [ $status -eq 0 ] && { [[ "$res" == *"0.99"* ]] || [[ "$res" == *"1.0"* ]]; }; then
+    echo "Test 3: OK"
 else
-    echo "Test 3 (tan 45): 不正解: $res"
+    echo "Test 3: NG"
     exit 1
 fi
+
+
+
 
 # Test 4: 角度ではなく文字を入力された場合に対するエラー処理
 
