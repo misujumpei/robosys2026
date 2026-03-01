@@ -36,9 +36,11 @@ fi
 
 
 # Test 4: 角度ではなく文字を入力された場合
-
+set +e 
 ./trig sin abc > /dev/null 2>&1
 status=$?
+set -e
+
 if [ $status -ne 0 ]; then
     echo "Test 4: OK"
 else
@@ -48,8 +50,11 @@ fi
 
 
 # Test 5: 記号の入力
+set +e
 ./trig sin "@#!?" > /dev/null 2>&1
 status=$?
+set -e
+
 if [ $status -ne 0 ]; then
     echo "Test 5: OK"
 else
@@ -59,8 +64,11 @@ fi
 
 
 # Test 6: 未対応の関数名（例: log）
+set +e
 ./trig log 90 > /dev/null 2>&1
 status=$?
+set -e
+
 if [ $status -ne 0 ]; then
     echo "Test 6: OK"
 else
@@ -81,8 +89,11 @@ fi
 
 
 # Test 8: 引数が足りないとき
+set +e
 ./trig sin > /dev/null 2>&1
 status=$?
+set -e
+
 if [ $status -ne 0 ]; then
     echo "Test 8: OK"
 else
