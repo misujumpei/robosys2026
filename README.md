@@ -6,7 +6,7 @@
 
 ## インストール手順
 ```bash
-$ git clone [https://github.com/misujumpei/robosys2026.git](https://github.com/misujumpei/robosys2026.git)
+$ git clone https://github.com/misujumpei/robosys2026.git 
 $ cd robosys2026
 ```
 
