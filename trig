@@ -4,9 +4,7 @@
 import sys
 import math
 
-
 if len(sys.argv) < 2:
-    print("使い方: ./trig [sin|cos|tan] [角度]", file=sys.stderr)
     sys.exit(1)
 
 func = sys.argv[1]

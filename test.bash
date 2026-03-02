@@ -2,105 +2,46 @@
 # SPDX-FileCopyrightText: 2026 misujumpei
 # SPDX-License-Identifier: BSD-3-Clause
 
-# Test 1: sin 90 のテスト
-res=$(./trig sin 90)
-status=$?
-if [ $status -eq 0 ] && [ "$res" = "1.0" ]; then
-    echo "Test 1: OK"
-else
-    echo "Test 1: NG"
-    exit 1
-fi
+# エラー発生時にその行番号を表示して終了
+ng () {
+    echo "NG at Line $1"
+    res=1
+}
 
+res=0
 
-# Test 2: cos 60 のテスト
-res=$(./trig cos 60)
-status=$?
-if [ $status -eq 0 ] && [[ "$res" == *"0.5"* ]]; then
-    echo "Test 2: OK"
-else
-    echo "Test 2: NG"
-    exit 1
-fi
+### 正常系のテスト ###
+# 引数テスト
+out=$(./trig sin 90)
+[ "$out" = "1.0" ] || ng $LINENO
 
+out=$(./trig cos 60)
+[ "$out" = "0.5" ] || ng $LINENO
 
-# Test 3: tan 45 のテスト
-res=$(./trig tan 45)      
-status=$?
-if [ $status -eq 0 ] && { [[ "$res" == *"0.99"* ]] || [[ "$res" == *"1.0"* ]]; }; then
-    echo "Test 3: OK"
-else
-    echo "Test 3: NG"
-    exit 1
-fi
+out=$(./trig tan 45)
+[ "$out" = "1.0" ] || ng $LINENO
 
+# 標準入力テスト
+out=$(echo 90 | ./trig sin)
+[ "$out" = "1.0" ] || ng $LINENO
 
-# Test 4: 角度ではなく文字を入力された場合
-set +e 
+### 異常系のテスト ###
+# 文字を入力された場合
 ./trig sin abc > /dev/null 2>&1
-status=$?
-set -e
+[ $? -eq 1 ] || ng $LINENO
 
-if [ $status -ne 0 ]; then
-    echo "Test 4: OK"
-else
-    echo "Test 4: NG"
-    exit 1
-fi
-
-
-# Test 5: 記号の入力
-set +e
+# 記号の入力
 ./trig sin "@#!?" > /dev/null 2>&1
-status=$?
-set -e
+[ $? -eq 1 ] || ng $LINENO
 
-if [ $status -ne 0 ]; then
-    echo "Test 5: OK"
-else
-    echo "Test 5: NG"
-    exit 1
-fi
-
-
-# Test 6: 未対応の関数名（例: log）
-set +e
+# 未対応の関数名
 ./trig log 90 > /dev/null 2>&1
-status=$?
-set -e
+[ $? -eq 1 ] || ng $LINENO
 
-if [ $status -ne 0 ]; then
-    echo "Test 6: OK"
-else
-    echo "Test 6: NG"
-    exit 1
-fi
-
-
-# Test 7: 引数が3つ以上あるとき
-res=$(./trig sin 90 dummy)
-status=$?
-if [ $status -eq 0 ] && [ "$res" = "1.0" ]; then
-    echo "Test 7: OK"
-else
-    echo "Test 7: NG"
-    exit 1
-fi
-
-
-# Test 8: 引数が足りないとき
-set +e
+# 引数不足
 ./trig sin > /dev/null 2>&1
-status=$?
-set -e
+[ $? -eq 1 ] || ng $LINENO
 
-if [ $status -ne 0 ]; then
-    echo "Test 8: OK"
-else
-    echo "Test 8: NG"
-    exit 1
-fi
-
-echo "All tests passed."
-exit 0
-
+# すべてのテストを通過したらOK
+[ "$res" = 0 ] && echo "OK"
+exit $res
