@@ -25,7 +25,7 @@ $ echo <角度> | ./trig <関数名>
 * 角度: 度数法（degree）の数値（整数または小数）
 
 ## 実行例
- ### 基本的な実行
+### 基本的な実行
 ```bash
 $ ./trig sin 90
 1.0
@@ -41,11 +41,11 @@ $ seq 0 30 90 | ./trig sin
 ```
 
 ### エラー時の動作
- ```bash
+```bash
 $ ./trig sin abc
 $ echo $?
 1
- ```
+```
 
 ## テスト・動作環境
 * Ubuntu 22.04 LTS / Ubuntu 24.04 LTS 
