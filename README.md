@@ -4,6 +4,11 @@
 
 コマンドライン引数、または標準入力から角度（度数法）を受け取り、三角関数（sin, cos, tan）の計算結果を出力するコマンドです。
 
+## インストール手順
+```bash
+$ git clone [https://github.com/misujumpei/robosys2026.git](https://github.com/misujumpei/robosys2026.git)
+$ cd robosys2026
+```
 
 ## 使い方
 
@@ -46,7 +51,7 @@ $ echo $?
 
 ## テスト・動作環境
 * Ubuntu 22.04 LTS / Ubuntu 24.04 LTS 
-* Python 3.7 〜 3.12 
+* Python 3.8 〜 3.12 
 
 ```bash
 $ ./test.bash
