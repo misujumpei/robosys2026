@@ -48,16 +48,16 @@ $ echo $?
  ```
 
 ## テスト・動作環境
-  *Ubuntu 22.04 LTS / Ubuntu 24.04 LTS 
-  *Python 3.7 〜 3.12 
+* Ubuntu 22.04 LTS / Ubuntu 24.04 LTS 
+* Python 3.7 〜 3.12 
 
 ```bash
- $ ./test.bash
+$ ./test.bash
 ```
 
 
 ## ライセンス・著作権
- *このソフトウェアパッケージは、3条項BSDライセンスの下、再頒布および使用が許可されます。
- *© 2026 misujumpei
- *参考: [千葉工業大学 ロボットシステム学（2025）の講義資料](https://github.com/ryuichiueda/slides_marp/tree/master/robosys2025)
+* このソフトウェアパッケージは、3条項BSDライセンスの下、再頒布および使用が許可されます。
+* © 2026 misujumpei
+* 参考: [千葉工業大学 ロボットシステム学（2025）の講義資料](https://github.com/ryuichiueda/slides_marp/tree/master/robosys2025)
 
