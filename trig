@@ -12,10 +12,10 @@ func = sys.argv[1]
 input_data = []
 
 if len(sys.argv) >= 3:
-    input_data.append(sys.argv[2])
+    input_data.extend(sys.argv[2:])
 elif not sys.stdin.isatty():
-     for line in sys.stdin:
-         input_data.append(line.strip())
+    for line in sys.stdin:
+        input_data.append(line.strip())
 
 if not input_data:
     sys.exit(1)

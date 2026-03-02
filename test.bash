@@ -61,6 +61,11 @@ status=$?
 [ "$out" = "" ] || ng $LINENO
 [ $status -eq 1 ] || ng $LINENO  
 
+# 複数引数のテスト
+out=$(./trig sin 90 180)
+[ "$out" = "1.0
+0.0" ] || ng $LINENO
+
 # すべてのテストを通過したらOK
 [ "$res" = 0 ] && echo "OK"
 exit $res
